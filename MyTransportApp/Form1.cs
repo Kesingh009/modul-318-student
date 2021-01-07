@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SwissTransport.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,5 +17,60 @@ namespace MyTransportApp
         {
             InitializeComponent();
         }
-    }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var transport = new Transport();
+            var connections = transport.GetConnections("luzern", "sursee");
+            var temp = connections.ConnectionList[0].From.Station;
+            
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var transport = new Transport();
+            var connections = transport.GetConnections("luzern","sursee");
+            var temp = connections.ConnectionList[0].From.Station;
+        }
+
+        private void comboBox1_TextChanged(object sender, EventArgs e)
+        {
+            var transport = new Transport();
+            var stations = transport.GetStations(comboBox1.Text);
+            var temp = stations.StationList[0].Name;
+
+            foreach(var x in stations.StationList)
+            {
+                comboBox1.Items.Add(x.Name);
+            }
+            
+        }
+
+        private void comboBox2_TextChanged(object sender, EventArgs e)
+        {
+            var transport = new Transport();
+            var stations = transport.GetStations(comboBox2.Text);
+            var temp = stations.StationList[0].Name;
+
+            foreach (var x in stations.StationList)
+            {
+                comboBox2.Items.Add(x.Name);
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+           
+        }
+    }   
 }
