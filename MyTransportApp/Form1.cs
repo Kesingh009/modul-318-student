@@ -21,9 +21,14 @@ namespace MyTransportApp
         private void button1_Click(object sender, EventArgs e)
         {
             var transport = new Transport();
-            var connections = transport.GetConnections("luzern", "sursee");
-            var temp = connections.ConnectionList[0].From.Station;
+            var connections = transport.GetConnections(comboBox1.Text , comboBox2.Text);
+            dataGridView1.Rows.Clear();
+            dataGridView1.Rows.Add(connections.ConnectionList[0].Duration, connections.ConnectionList[0].From.Departure, connections.ConnectionList[0].From.Delay, connections.ConnectionList[0].From.Platform);
+            dataGridView1.Rows.Add(connections.ConnectionList[1].Duration, connections.ConnectionList[1].From.Departure, connections.ConnectionList[1].From.Delay);
+            dataGridView1.Rows.Add(connections.ConnectionList[2].Duration, connections.ConnectionList[2].From.Departure, connections.ConnectionList[2].From.Delay);
+            dataGridView1.Rows.Add(connections.ConnectionList[3].Duration, connections.ConnectionList[3].From.Departure, connections.ConnectionList[3].From.Delay);
             
+
         }
 
         private void label1_Click(object sender, EventArgs e)
